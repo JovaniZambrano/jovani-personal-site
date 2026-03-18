@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   // Your production data - 9 photos
   const productions = [
@@ -76,6 +77,29 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0f0e13] text-[#e8e8e8]">
+      {/* Lightbox for expanded photos */}
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div className="relative w-full h-full max-w-6xl max-h-[90vh]">
+            <Image
+              src={lightboxImage}
+              alt="Production photo expanded"
+              fill
+              className="object-contain"
+            />
+            <button 
+              className="absolute top-4 right-4 text-white text-4xl hover:text-[#c4a574]"
+              onClick={() => setLightboxImage(null)}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0e13]/95 backdrop-blur-sm border-b border-[#8b6f47]/20">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -83,7 +107,7 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex gap-8 text-sm flex-1">
               <a href="#about" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">About</a>
-              <a href="#work" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Selected Work</a>
+              <a href="#videos" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Selected Work</a>
               <a href="#upcoming" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Upcoming</a>
               <a href="#contact" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Connect</a>
             </div>
@@ -93,6 +117,7 @@ export default function Home() {
               <a 
                 href="/resume.pdf" 
                 target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-2.5 bg-[#8b6f47] text-white hover:bg-[#9b7f57] rounded font-medium transition-all shadow-lg hover:shadow-xl"
               >
                 Resume
@@ -100,6 +125,7 @@ export default function Home() {
               <a 
                 href="/headshot.pdf" 
                 target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-2.5 bg-[#8b6f47] text-white hover:bg-[#9b7f57] rounded font-medium transition-all shadow-lg hover:shadow-xl"
               >
                 Headshot
@@ -126,12 +152,12 @@ export default function Home() {
                 About
               </a>
               <a 
-                href="#work" 
-                className="text-[#c4a574] hover:text-[#d4b584] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Selected Work
-              </a>
+  href="#videos" 
+  className="text-[#c4a574] hover:text-[#d4b584] transition-colors"
+  onClick={() => setMobileMenuOpen(false)}
+>
+  Selected Work
+</a>
               <a 
                 href="#upcoming" 
                 className="text-[#c4a574] hover:text-[#d4b584] transition-colors"
@@ -150,6 +176,7 @@ export default function Home() {
                 <a 
                   href="/resume.pdf" 
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#8b6f47] text-white rounded text-center font-medium"
                 >
                   Resume
@@ -157,6 +184,7 @@ export default function Home() {
                 <a 
                   href="/headshot.pdf" 
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#8b6f47] text-white rounded text-center font-medium"
                 >
                   Headshot
@@ -182,14 +210,17 @@ export default function Home() {
                 Born and raised in New York, now calling Boise home. Passionate about stories that spark conversation and challenge perspectives.
               </p>
             </div>
-            <div className="relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-[#8b6f47]/30 shadow-2xl">
-              <Image
-                src="/hero/hero.webp"
-                alt="Jovani Zambrano"
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className="relative">
+              <div className="relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-[#8b6f47]/30 shadow-2xl">
+                <Image
+                  src="/hero/hero.webp"
+                  alt="Jovani Zambrano"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <p className="text-xs text-[#999] mt-2 text-right">Photo by Ted Ely</p>
             </div>
           </div>
         </div>
@@ -198,7 +229,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="py-16 md:py-20 px-6 bg-gradient-to-b from-[#1a1520]/50 to-transparent">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">About</h2>
+    
           <div className="space-y-4 text-base md:text-lg leading-relaxed text-[#d0d0d0]">
             <p>
               Born and raised in New York, Jovani now calls Boise home, where he pursues his passion for acting and creating theater. Jovani is drawn to stories that spark conversation—ones that challenge perspectives and linger with audiences long after the curtain falls. He gravitates toward characters wrestling with internal conflicts, often the underdogs or the least expected, and brings presence and commitment to every role.
@@ -213,12 +244,34 @@ export default function Home() {
         </div>
       </section>
 
+{/* Commercial/Video Section */}
+      <section id="videos" className="py-16 md:py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative aspect-video bg-[#1a1520]/30 rounded-lg border-2 border-[#8b6f47]/30 overflow-hidden shadow-xl">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/aJ0cD1Nbj20"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       {/* Selected Work Section */}
       <section id="work" className="py-16 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {productions.map((production, index) => (
-              <div key={index} className="group cursor-pointer">
+              <div 
+                key={index} 
+                className="group cursor-pointer"
+                onClick={() => setLightboxImage(production.image)}
+              >
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden border-2 border-transparent group-hover:border-[#8b6f47] transition-all duration-300 shadow-lg group-hover:shadow-2xl">
                   <Image
                     src={production.image}
@@ -246,7 +299,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">Coming Up Next</h2>
           <div className="bg-[#1a1520]/30 rounded-lg p-6 md:p-8 border border-[#8b6f47]/30 shadow-xl">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0">
+             <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0">
                 <Image
                   src="/logos/lb-logo.png"
                   alt="Little Branch Theater"
