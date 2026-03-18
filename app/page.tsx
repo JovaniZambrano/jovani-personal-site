@@ -100,7 +100,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* Navigation */}
+{/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0e13]/95 backdrop-blur-sm border-b border-[#8b6f47]/20">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
@@ -112,7 +112,7 @@ export default function Home() {
               <a href="#contact" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Connect</a>
             </div>
 
-            {/* Desktop Download Buttons - MORE PROMINENT */}
+            {/* Desktop Download Buttons */}
             <div className="hidden md:flex gap-4 text-sm">
               <a 
                 href="/resume.pdf" 
@@ -132,52 +132,70 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Hamburger Button */}
             <button 
-              className="md:hidden text-sm text-[#c4a574]"
+              className="md:hidden flex flex-col gap-1.5 z-[70]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? 'Close' : 'Menu'}
+              <span className={`block w-6 h-0.5 bg-[#c4a574] transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-[#c4a574] transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-[#c4a574] transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
             </button>
           </div>
+        </div>
+      </nav>
 
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-              <a 
-                href="#about" 
-                className="text-[#c4a574] hover:text-[#d4b584] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                About
-              </a>
-              <a 
-  href="#videos" 
-  className="text-[#c4a574] hover:text-[#d4b584] transition-colors"
-  onClick={() => setMobileMenuOpen(false)}
->
-  Selected Work
-</a>
-              <a 
-                href="#upcoming" 
-                className="text-[#c4a574] hover:text-[#d4b584] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Upcoming
-              </a>
-              <a 
-                href="#contact" 
-                className="text-[#c4a574] hover:text-[#d4b584] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Connect
-              </a>
-              <div className="pt-4 border-t border-[#8b6f47]/20 flex flex-col gap-3">
+{/* Mobile Slide-In Menu */}
+      {mobileMenuOpen && (
+        <>
+          {/* Lighter overlay - more see-through */}
+          <div 
+            className="md:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-[60]"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          
+          {/* Slide-in menu panel - TRANSPARENT */}
+          <div className="md:hidden fixed top-0 right-0 bottom-0 w-80 bg-[#0f0e13]/75 backdrop-blur-lg z-[65] shadow-2xl overflow-y-auto border-l border-[#8b6f47]/30">
+            <div className="flex flex-col pt-24 px-8 pb-8">
+              <div className="flex flex-col gap-6">
+                <a 
+                  href="#about" 
+                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  About
+                </a>
+                <a 
+                  href="#videos" 
+                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Selected Work
+                </a>
+                <a 
+                  href="#upcoming" 
+                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Upcoming
+                </a>
+                <a 
+                  href="#contact" 
+                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Connect
+                </a>
+              </div>
+              
+              <div className="flex flex-col gap-3 pt-8">
                 <a 
                   href="/resume.pdf" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#8b6f47] text-white rounded text-center font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Resume
                 </a>
@@ -186,14 +204,15 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#8b6f47] text-white rounded text-center font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Headshot
                 </a>
               </div>
             </div>
-          )}
-        </div>
-      </nav>
+          </div>
+        </>
+      )}
 
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-6">
@@ -226,10 +245,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
+    {/* About Section */}
       <section id="about" className="py-16 md:py-20 px-6 bg-gradient-to-b from-[#1a1520]/50 to-transparent">
         <div className="max-w-4xl mx-auto">
-    
+          {/* <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">About</h2> */}
           <div className="space-y-4 text-base md:text-lg leading-relaxed text-[#d0d0d0]">
             <p>
               Born and raised in New York, Jovani now calls Boise home, where he pursues his passion for acting and creating theater. Jovani is drawn to stories that spark conversation—ones that challenge perspectives and linger with audiences long after the curtain falls. He gravitates toward characters wrestling with internal conflicts, often the underdogs or the least expected, and brings presence and commitment to every role.
@@ -313,11 +332,11 @@ export default function Home() {
               </div>
             </div>
             <p className="text-[#d0d0d0] leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-              Little Branch is excited to share that we successfully completed our inaugural production! Honey Brown Eyes by Stefanie Zadravec was a meaningful debut for our company and resonated deeply with Boise's refugee community.
-            </p>
-            <p className="text-[#d0d0d0] leading-relaxed mb-6 text-sm md:text-base">
-              Now we're hard at work developing our second production! We're carefully selecting another show that will connect and resonate with audiences and our local community, continuing our mission to bring meaningful theater to Boise.
-            </p>
+  Little Branch is excited to share that we successfully completed our inaugural production! Honey Brown Eyes by Stefanie Zadravec was a meaningful debut for our company and resonated deeply with Boise's refugee community.
+</p>
+<p className="text-[#d0d0d0] leading-relaxed mb-6 text-sm md:text-base">
+  Now we're thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways. Check out our website to follow along on our journey.
+</p>
             <Link 
               href="https://www.littlebranchtheater.org" 
               target="_blank"
@@ -349,10 +368,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
+     {/* Footer */}
       <footer className="py-8 md:py-12 px-6 border-t border-[#8b6f47]/20">
         <div className="max-w-7xl mx-auto text-center text-[#b8b8b8]">
-          <p className="mb-2 text-sm md:text-base">Represented by Urban Talent Management</p>
           <p className="text-xs md:text-sm">© 2026 Jovani Andrés Zambrano</p>
         </div>
       </footer>
