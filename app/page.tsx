@@ -100,15 +100,16 @@ export default function Home() {
         </div>
       )}
 
-{/* Navigation */}
+      {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0e13]/95 backdrop-blur-sm border-b border-[#8b6f47]/20">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             {/* Desktop Navigation */}
             <div className="hidden md:flex gap-8 text-sm flex-1">
               <a href="#about" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">About</a>
-              <a href="#videos" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Selected Work</a>
               <a href="#upcoming" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Upcoming</a>
+              <a href="#work" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Performance</a>
+              <a href="#beyond" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Beyond</a>
               <a href="#contact" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Connect</a>
             </div>
 
@@ -146,16 +147,16 @@ export default function Home() {
         </div>
       </nav>
 
-{/* Mobile Slide-In Menu */}
+      {/* Mobile Slide-In Menu */}
       {mobileMenuOpen && (
         <>
-          {/* Lighter overlay - more see-through */}
+          {/* Dark overlay */}
           <div 
             className="md:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-[60]"
             onClick={() => setMobileMenuOpen(false)}
           />
           
-          {/* Slide-in menu panel - TRANSPARENT */}
+          {/* Slide-in menu panel */}
           <div className="md:hidden fixed top-0 right-0 bottom-0 w-80 bg-[#0f0e13]/75 backdrop-blur-lg z-[65] shadow-2xl overflow-y-auto border-l border-[#8b6f47]/30">
             <div className="flex flex-col pt-24 px-8 pb-8">
               <div className="flex flex-col gap-6">
@@ -167,18 +168,25 @@ export default function Home() {
                   About
                 </a>
                 <a 
-                  href="#videos" 
-                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Selected Work
-                </a>
-                <a 
                   href="#upcoming" 
                   className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Upcoming
+                </a>
+                <a 
+                  href="#work" 
+                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Performance
+                </a>
+                <a 
+                  href="#beyond" 
+                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Beyond
                 </a>
                 <a 
                   href="#contact" 
@@ -226,8 +234,8 @@ export default function Home() {
                 Actor | Theater Maker | AEA
               </p>
               <p className="text-base md:text-lg leading-relaxed text-[#d0d0d0]">
-  New York roots, Boise home. Actor and theater maker committed to work that asks important questions and builds community through shared stories.
-</p>
+                New York roots, Boise home. Actor and theater maker committed to work that asks important questions and builds community through shared stories.
+              </p>
             </div>
             <div className="relative">
               <div className="relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-[#8b6f47]/30 shadow-2xl">
@@ -245,10 +253,9 @@ export default function Home() {
         </div>
       </section>
 
-    {/* About Section */}
+      {/* About Section - NO TITLE */}
       <section id="about" className="py-16 md:py-20 px-6 bg-gradient-to-b from-[#1a1520]/50 to-transparent">
         <div className="max-w-4xl mx-auto">
-          {/* <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">About</h2> */}
           <div className="space-y-4 text-base md:text-lg leading-relaxed text-[#d0d0d0]">
             <p>
               Born and raised in New York, Jovani now calls Boise home, where he pursues his passion for acting and creating theater. Jovani is drawn to stories that spark conversation—ones that challenge perspectives and linger with audiences long after the curtain falls. He gravitates toward characters wrestling with internal conflicts, often the underdogs or the least expected, and brings presence and commitment to every role.
@@ -263,8 +270,44 @@ export default function Home() {
         </div>
       </section>
 
-{/* Commercial/Video Section */}
-      <section id="videos" className="py-16 md:py-20 px-6">
+      {/* Upcoming Section */}
+      <section id="upcoming" className="py-16 md:py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">Upcoming Next</h2>
+          <div className="bg-[#1a1520]/30 rounded-lg p-6 md:p-8 border border-[#8b6f47]/30 shadow-xl">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0">
+                <Image
+                  src="/logos/lb-logo.png"
+                  alt="Little Branch Theater"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl font-medium text-[#e8d4b8]">Little Branch Theater</h3>
+                <p className="text-sm md:text-base text-[#c4a574]">Co-Founder & Co-Director</p>
+              </div>
+            </div>
+            <p className="text-[#d0d0d0] leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+              Little Branch is excited to share that we successfully completed our inaugural production! Honey Brown Eyes by Stefanie Zadravec was a meaningful debut for our company and resonated deeply with Boise's refugee community.
+            </p>
+            <p className="text-[#d0d0d0] leading-relaxed mb-6 text-sm md:text-base">
+              Now we're thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways. Check out our website to follow along on our journey.
+            </p>
+            <Link 
+              href="https://www.littlebranchtheater.org" 
+              target="_blank"
+              className="inline-block px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded transition-all shadow-lg hover:shadow-xl font-medium text-sm md:text-base"
+            >
+              Visit Little Branch Theater
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-16 md:py-20 px-6 bg-gradient-to-b from-transparent to-[#1a1520]/50">
         <div className="max-w-4xl mx-auto">
           <div className="relative aspect-video bg-[#1a1520]/30 rounded-lg border-2 border-[#8b6f47]/30 overflow-hidden shadow-xl">
             <iframe
@@ -281,7 +324,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Selected Work Section */}
+      {/* Selected Work Section - NO TITLE */}
       <section id="work" className="py-16 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -312,38 +355,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Upcoming Section */}
-      <section id="upcoming" className="py-16 md:py-20 px-6 bg-gradient-to-b from-transparent to-[#1a1520]/50">
+      {/* Beyond the Stage - Combined with Reflections */}
+      <section id="beyond" className="py-16 md:py-20 px-6 bg-gradient-to-b from-[#1a1520]/50 to-transparent">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">Coming Up Next</h2>
-          <div className="bg-[#1a1520]/30 rounded-lg p-6 md:p-8 border border-[#8b6f47]/30 shadow-xl">
-            <div className="flex items-center gap-4 mb-6">
-             <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0">
-                <Image
-                  src="/logos/lb-logo.png"
-                  alt="Little Branch Theater"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg md:text-xl font-medium text-[#e8d4b8]">Little Branch Theater</h3>
-                <p className="text-sm md:text-base text-[#c4a574]">Co-Founder & Co-Director</p>
-              </div>
+          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-[#e8d4b8]">Beyond the Stage</h2>
+          
+          {/* Reflection Card */}
+          <div className="bg-[#1a1520]/30 rounded-lg p-6 border border-[#8b6f47]/30 mb-8">
+            <h3 className="text-lg md:text-xl font-medium text-[#e8d4b8] mb-2">Learning DIY Theater</h3>
+            <p className="text-sm text-[#999] mb-4">March 2026</p>
+            <p className="text-[#d0d0d0] leading-relaxed">
+              Building a theater from the ground up. This includes learning how to market, how to budget, and how to literally build. Currently constructing the set of Sanctuary City in our own backyard—a hands-on education in every facet of theater-making.
+            </p>
+          </div>
+
+          {/* Current Interests */}
+          <div className="grid sm:grid-cols-3 gap-4">
+            <div className="bg-[#1a1520]/30 rounded-lg p-4 border border-[#8b6f47]/30 text-center">
+              <div className="text-2xl mb-2">🎭</div>
+              <p className="text-xs text-[#c4a574] mb-1 uppercase tracking-wide">Next Up</p>
+              <p className="text-sm text-[#e8e8e8]">Performing in Sanctuary City</p>
             </div>
-            <p className="text-[#d0d0d0] leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-  Little Branch is excited to share that we successfully completed our inaugural production! Honey Brown Eyes by Stefanie Zadravec was a meaningful debut for our company and resonated deeply with Boise's refugee community.
-</p>
-<p className="text-[#d0d0d0] leading-relaxed mb-6 text-sm md:text-base">
-  Now we're thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways. Check out our website to follow along on our journey.
-</p>
-           <Link 
-  href="https://www.littlebranchtheater.org" 
-  target="_blank"
-  className="inline-block px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded transition-all shadow-lg hover:shadow-xl font-medium text-sm md:text-base"
->
-  Visit Little Branch Theater
-</Link>
+            
+            <div className="bg-[#1a1520]/30 rounded-lg p-4 border border-[#8b6f47]/30 text-center">
+              <div className="text-2xl mb-2">📖</div>
+              <p className="text-xs text-[#c4a574] mb-1 uppercase tracking-wide">Reading</p>
+              <p className="text-sm text-[#e8e8e8]">Crime and Punishment</p>
+            </div>
+            
+            <div className="bg-[#1a1520]/30 rounded-lg p-4 border border-[#8b6f47]/30 text-center">
+              <div className="text-2xl mb-2">♟️</div>
+              <p className="text-xs text-[#c4a574] mb-1 uppercase tracking-wide">Chess</p>
+              <p className="text-sm text-[#e8e8e8]">Elo 879</p>
+            </div>
           </div>
         </div>
       </section>
@@ -357,7 +401,7 @@ export default function Home() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 items-start">
-   {/* Contact Form */}
+            {/* Contact Form */}
             <div className="bg-[#1a1520]/30 rounded-lg p-6 border border-[#8b6f47]/30">
               <h3 className="text-xl font-medium text-[#e8d4b8] mb-4">Send a Message</h3>
               <form 
@@ -365,8 +409,8 @@ export default function Home() {
                 method="POST"
                 className="space-y-4"
               >
-                {/* Hidden field to stay on page after submit */}
-                <input type="hidden" name="_next" value="https://jovanizambrano.com/#contact" />
+                {/* Hidden fields for Formspree */}
+                <input type="hidden" name="_next" value="http://localhost:3000/#contact" />
                 <input type="hidden" name="_subject" value="New contact form submission from jovanizambrano.com" />
                 <input type="hidden" name="_captcha" value="true" />
                 
@@ -406,19 +450,18 @@ export default function Home() {
                   />
                 </div>
                 
-             <button
-  type="submit"
-  className="w-full px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded font-medium transition-all shadow-lg hover:shadow-xl"
->
-  Send Message
-</button>
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded font-medium transition-all shadow-lg hover:shadow-xl"
+                >
+                  Send Message
+                </button>
               </form>
             </div>
 
             {/* Social Links */}
             <div className="bg-[#1a1520]/30 rounded-lg p-6 border border-[#8b6f47]/30">
-              <h3 className="text-xl font-medium text-[#e8d4b8] mb-4">Connect on Social</h3>
-              
+              <h3 className="text-xl font-medium text-[#e8d4b8] mb-6">Connect on Social</h3>
               <a 
                 href="https://www.instagram.com/jovani_witha_j" 
                 target="_blank"
@@ -432,7 +475,7 @@ export default function Home() {
         </div>
       </section>
 
-     {/* Footer */}
+      {/* Footer */}
       <footer className="py-8 md:py-12 px-6 border-t border-[#8b6f47]/20">
         <div className="max-w-7xl mx-auto text-center text-[#b8b8b8]">
           <p className="text-xs md:text-sm">© 2026 Jovani Andrés Zambrano</p>
