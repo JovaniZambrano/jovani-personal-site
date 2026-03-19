@@ -226,8 +226,8 @@ export default function Home() {
                 Actor | Theater Maker | AEA
               </p>
               <p className="text-base md:text-lg leading-relaxed text-[#d0d0d0]">
-                Born and raised in New York, now calling Boise home. Passionate about stories that spark conversation and challenge perspectives.
-              </p>
+  New York roots, Boise home. Actor and theater maker committed to work that asks important questions and builds community through shared stories.
+</p>
             </div>
             <div className="relative">
               <div className="relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-[#8b6f47]/30 shadow-2xl">
@@ -337,33 +337,97 @@ export default function Home() {
 <p className="text-[#d0d0d0] leading-relaxed mb-6 text-sm md:text-base">
   Now we're thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways. Check out our website to follow along on our journey.
 </p>
-            <Link 
-              href="https://www.littlebranchtheater.org" 
-              target="_blank"
-              className="inline-block px-6 py-3 bg-[#8b6f47] text-white hover:bg-[#9b7f57] rounded transition-all shadow-lg hover:shadow-xl font-medium text-sm md:text-base"
-            >
-              Visit Little Branch Theater
-            </Link>
+           <Link 
+  href="https://www.littlebranchtheater.org" 
+  target="_blank"
+  className="inline-block px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded transition-all shadow-lg hover:shadow-xl font-medium text-sm md:text-base"
+>
+  Visit Little Branch Theater
+</Link>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">Let's Connect</h2>
-          <p className="text-[#b8b8b8] mb-6 md:mb-8 text-sm md:text-base">
-            Follow along on Instagram for updates and behind-the-scenes moments.
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8] text-center">Let's Connect</h2>
+          <p className="text-[#b8b8b8] mb-8 text-sm md:text-base text-center max-w-2xl mx-auto">
+            Interested in working together? Send me a message or connect on Instagram.
           </p>
-          <div className="flex justify-center gap-6">
-            <a 
-              href="https://www.instagram.com/jovani_witha_j" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 md:px-10 py-3 md:py-4 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded transition-all shadow-lg hover:shadow-xl font-medium text-sm md:text-lg"
-            >
-              Instagram
-            </a>
+
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+   {/* Contact Form */}
+            <div className="bg-[#1a1520]/30 rounded-lg p-6 border border-[#8b6f47]/30">
+              <h3 className="text-xl font-medium text-[#e8d4b8] mb-4">Send a Message</h3>
+              <form 
+                action="https://formspree.io/f/xyknojvp" 
+                method="POST"
+                className="space-y-4"
+              >
+                {/* Hidden field to stay on page after submit */}
+                <input type="hidden" name="_next" value="https://jovanizambrano.com/#contact" />
+                <input type="hidden" name="_subject" value="New contact form submission from jovanizambrano.com" />
+                <input type="hidden" name="_captcha" value="true" />
+                
+                <div>
+                  <label htmlFor="name" className="block text-sm text-[#c4a574] mb-2">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    className="w-full px-4 py-3 bg-[#0f0e13]/50 border border-[#8b6f47]/30 rounded text-[#e8e8e8] focus:outline-none focus:border-[#8b6f47] transition-colors"
+                    placeholder="Your name"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm text-[#c4a574] mb-2">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    className="w-full px-4 py-3 bg-[#0f0e13]/50 border border-[#8b6f47]/30 rounded text-[#e8e8e8] focus:outline-none focus:border-[#8b6f47] transition-colors"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm text-[#c4a574] mb-2">Message</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 bg-[#0f0e13]/50 border border-[#8b6f47]/30 rounded text-[#e8e8e8] focus:outline-none focus:border-[#8b6f47] transition-colors resize-none"
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
+                
+             <button
+  type="submit"
+  className="w-full px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded font-medium transition-all shadow-lg hover:shadow-xl"
+>
+  Send Message
+</button>
+              </form>
+            </div>
+
+            {/* Social Links */}
+            <div className="bg-[#1a1520]/30 rounded-lg p-6 border border-[#8b6f47]/30">
+              <h3 className="text-xl font-medium text-[#e8d4b8] mb-4">Connect on Social</h3>
+              
+              <a 
+                href="https://www.instagram.com/jovani_witha_j" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-full px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded transition-all shadow-lg hover:shadow-xl font-medium"
+              >
+                Follow on Instagram
+              </a>
+            </div>
           </div>
         </div>
       </section>
