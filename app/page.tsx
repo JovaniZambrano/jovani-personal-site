@@ -77,25 +77,48 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0f0e13] text-[#e8e8e8]">
-      {/* Lightbox for expanded photos */}
+    {/* Lightbox for expanded photos */}
       {lightboxImage && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 cursor-pointer"
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
           onClick={() => setLightboxImage(null)}
         >
-          <div className="relative w-full h-full max-w-6xl max-h-[90vh]">
-            <Image
-              src={lightboxImage}
-              alt="Production photo expanded"
-              fill
-              className="object-contain"
-            />
+          <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center">
+            {/* Close button */}
             <button 
-              className="absolute top-4 right-4 text-white text-4xl hover:text-[#c4a574]"
+              className="absolute top-4 right-4 text-white text-4xl hover:text-[#c4a574] z-10"
               onClick={() => setLightboxImage(null)}
             >
               ×
             </button>
+            
+            {/* Image */}
+            <div className="relative w-full h-full">
+              <Image
+                src={lightboxImage}
+                alt="Production photo expanded"
+                fill
+                className="object-contain"
+              />
+              
+              {/* Production info overlay - visible in lightbox */}
+              {productions.find(p => p.image === lightboxImage) && (
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 md:p-8">
+                  <h3 className="text-xl md:text-2xl font-medium mb-2 text-white">
+                    {productions.find(p => p.image === lightboxImage)?.title}
+                  </h3>
+                  <p className="text-base md:text-lg text-gray-300 mb-2">
+                    By {productions.find(p => p.image === lightboxImage)?.playwright}
+                  </p>
+                  <p className="text-sm md:text-base text-gray-400">
+                    {productions.find(p => p.image === lightboxImage)?.theater}
+                  </p>
+                  <p className="text-sm md:text-base text-gray-400">
+                    Directed by {productions.find(p => p.image === lightboxImage)?.director}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -410,7 +433,7 @@ export default function Home() {
                 className="space-y-4"
               >
                 {/* Hidden fields for Formspree */}
-                <input type="hidden" name="_next" value="http://localhost:3000/#contact" />
+                <input type="hidden" name="_next" value="https://jovanizambrano.com/#contact" />
                 <input type="hidden" name="_subject" value="New contact form submission from jovanizambrano.com" />
                 <input type="hidden" name="_captcha" value="true" />
                 
