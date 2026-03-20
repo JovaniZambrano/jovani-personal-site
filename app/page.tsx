@@ -276,18 +276,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section - NO TITLE */}
+     {/* About Section - NO TITLE */}
       <section id="about" className="py-16 md:py-20 px-6 bg-gradient-to-b from-[#1a1520]/50 to-transparent">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-4 text-base md:text-lg leading-relaxed text-[#d0d0d0]">
             <p>
-              Born and raised in New York, Jovani now calls Boise home, where he pursues his passion for acting and creating theater. Jovani is drawn to stories that spark conversation—ones that challenge perspectives and linger with audiences long after the curtain falls. He gravitates toward characters wrestling with internal conflicts, often the underdogs or the least expected, and brings presence and commitment to every role.
+              Trained at Rutgers Mason Gross School of the Arts, Jovani performed at Shakespeare's Globe in London in As You Like It and Julius Caesar, where he participated in a workshop with Mark Rylance. He's appeared at Theater for the New City, Hudson Valley Shakespeare, Alley Repertory Theater, Boise Contemporary Theater, and The Spot, with a favorite role being Oscar in Sweat by Lynn Nottage. He gravitates toward characters wrestling with internal conflicts—often the underdogs or the least expected.
             </p>
             <p>
-              In addition to acting, Jovani is embracing new creative challenges—sound designer, producer, director, marketer, and web designer—fully immersing himself in the many facets of theater-making. Alongside his wife, he co-founded Little Branch, a theater company dedicated to thought-provoking, community-driven storytelling and creating meaningful connections both on and off the stage.
-            </p>
-            <p>
-              Jovani studied acting at Rutgers Mason Gross School of the Arts and had the incredible opportunity to perform at Shakespeare's Globe in London in As You Like It and Julius Caesar, where he also participated in a workshop with the brilliant Mark Rylance. One of his favorite roles was portraying Oscar in Sweat by Lynn Nottage. He has performed at Theater for the New City, Hudson Valley Shakespeare, Alley Repertory Theater, Boise Contemporary Theater, and The Spot.
+              Beyond acting, Jovani embraces the full scope of theater-making as a sound designer, producer, director, and marketer. Alongside his wife, he co-founded Little Branch, a theater company dedicated to thought-provoking, community-driven storytelling that creates meaningful connections both on and off the stage.
             </p>
           </div>
         </div>
@@ -312,11 +309,11 @@ export default function Home() {
                 <p className="text-sm md:text-base text-[#c4a574]">Co-Founder & Co-Director</p>
               </div>
             </div>
-            <p className="text-[#d0d0d0] leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+           <p className="text-[#d0d0d0] leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
               Little Branch is excited to share that we successfully completed our inaugural production! Honey Brown Eyes by Stefanie Zadravec was a meaningful debut for our company and resonated deeply with Boise's refugee community.
             </p>
             <p className="text-[#d0d0d0] leading-relaxed mb-6 text-sm md:text-base">
-              Now we're thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways. Check out our website to follow along on our journey.
+              Now we're thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways.
             </p>
             <Link 
               href="https://www.littlebranchtheater.org" 
@@ -419,9 +416,7 @@ export default function Home() {
       <section id="contact" className="py-16 md:py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8] text-center">Let's Connect</h2>
-          <p className="text-[#b8b8b8] mb-8 text-sm md:text-base text-center max-w-2xl mx-auto">
-            Interested in working together? Send me a message or connect on Instagram.
-          </p>
+          
 
           <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Contact Form */}
