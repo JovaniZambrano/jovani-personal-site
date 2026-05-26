@@ -60,18 +60,18 @@ export default function Home() {
       image: "/productions/sweat-2.webp"
     },
     {
-      title: "Blood Wedding",
-      playwright: "Federico García Lorca",
-      theater: "Rutgers Mason Gross School of the Arts",
-      director: "Matt Dickson",
-      image: "/productions/blood-wedding.webp"
+      title: "Sanctuary City",
+      playwright: "Martyna Majok",
+      theater: "Little Branch Theater",
+      director: "Amela Karadža",
+      image: "/productions/sanctuary-city.webp"
     },
     {
-      title: "Blood Wedding",
-      playwright: "Federico García Lorca",
-      theater: "Rutgers Mason Gross School of the Arts",
-      director: "Matt Dickson",
-      image: "/productions/blood-wedding-2.webp"
+      title: "Sanctuary City",
+      playwright: "Martyna Majok",
+      theater: "Little Branch Theater",
+      director: "Amela Karadža",
+      image: "/productions/sanctuary-city-2.webp"
     }
   ];
 
@@ -406,7 +406,7 @@ export default function Home() {
             <div className="bg-[#1a1520]/30 rounded-lg p-4 border border-[#8b6f47]/30 text-center">
               <div className="text-2xl mb-2">♟️</div>
               <p className="text-xs text-[#c4a574] mb-1 uppercase tracking-wide">Chess</p>
-              <p className="text-sm text-[#e8e8e8]">Elo 879</p>
+              <p className="text-sm text-[#e8e8e8]">Elo 1017</p>
             </div>
           </div>
         </div>
