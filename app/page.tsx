@@ -11,6 +11,20 @@ export default function Home() {
   // Your production data - 9 photos
   const productions = [
     {
+      title: "Sanctuary City",
+      playwright: "Martyna Majok",
+      theater: "Little Branch Theater",
+      director: "Amela Karadža",
+      image: "/productions/sanctuary-city.webp"
+    },
+    {
+      title: "Sanctuary City",
+      playwright: "Martyna Majok",
+      theater: "Little Branch Theater",
+      director: "Amela Karadža",
+      image: "/productions/sanctuary-city-2.webp"
+    },
+    {
       title: "Honey Brown Eyes",
       playwright: "Stefanie Zadravec",
       theater: "Little Branch Theater",
@@ -58,20 +72,6 @@ export default function Home() {
       theater: "Boise Contemporary Theater",
       director: "Stefan Novinski",
       image: "/productions/sweat-2.webp"
-    },
-    {
-      title: "Sanctuary City",
-      playwright: "Martyna Majok",
-      theater: "Little Branch Theater",
-      director: "Amela Karadža",
-      image: "/productions/sanctuary-city.webp"
-    },
-    {
-      title: "Sanctuary City",
-      playwright: "Martyna Majok",
-      theater: "Little Branch Theater",
-      director: "Amela Karadža",
-      image: "/productions/sanctuary-city-2.webp"
     }
   ];
 
@@ -344,7 +344,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Selected Work Section - NO TITLE */}
+     {/* Selected Work Section - NO TITLE */}
       <section id="work" className="py-16 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -359,7 +359,7 @@ export default function Home() {
                     src={production.image}
                     alt={`${production.title} production photo`}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Information overlay - appears on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
