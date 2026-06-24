@@ -7,6 +7,34 @@ import { useState } from "react";
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [blogIndex, setBlogIndex] = useState(0);
+
+  const blogPosts = [
+    {
+      date: "June 2026",
+      title: "Revisiting Honey Brown Eyes in Bosnia",
+      content: "As artistic directors of Little Branch Theater, we were recently fortunate enough to visit the stunningly beautiful Bosnia and Herzegovina. This trip allowed us to fully appreciate our first production of Honey Brown Eyes by Stefanie Zadravec and feel lucky we got to tell a story connected to this beautiful country last year. Grateful for the journey so far and for everyone who has supported Little Branch along the way. This was a reminder of why these stories still need to be told.",
+      image: "/blog/bosnia.webp",
+    },
+    {
+      date: "May 2026",
+      title: "Sanctuary City Closes",
+      content: "Little Branch has concluded its second production, Sanctuary City by Martyna Majok (recently voted in Forbes 2026 Self Made 2050 list). We partnered with ACLU and shared this powerful story with over 200 people. This could not have been accomplished without the overwhelming support of the Boise community.",
+      image: null,
+    },
+    {
+      date: "March 2026",
+      title: "Building a Theater from Scratch",
+      content: "Building a theater from the ground up. This includes learning how to market, how to budget, and how to literally build. Currently constructing the set of Sanctuary City in our own backyard\u2014a hands-on education in every facet of theater-making.",
+      image: null,
+    },
+    {
+      date: "Earlier",
+      title: "Little Branch Theater Wraps Its First Production",
+      content: "Little Branch is excited to share that we successfully completed our inaugural production! Honey Brown Eyes by Stefanie Zadravec was a meaningful debut for our company and resonated deeply with Boise\u2019s refugee community. Now we\u2019re thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways.",
+      image: null,
+    },
+  ];
 
   // Your production data - 9 photos
   const productions = [
@@ -130,7 +158,6 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex gap-8 text-sm flex-1">
               <a href="#about" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">About</a>
-              <a href="#upcoming" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Upcoming</a>
               <a href="#work" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Performance</a>
               <a href="#beyond" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Beyond</a>
               <a href="#contact" className="text-[#c4a574] hover:text-[#d4b584] transition-colors">Connect</a>
@@ -190,14 +217,7 @@ export default function Home() {
                 >
                   About
                 </a>
-                <a 
-                  href="#upcoming" 
-                  className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Upcoming
-                </a>
-                <a 
+                <a
                   href="#work" 
                   className="text-xl text-[#c4a574] hover:text-[#d4b584] transition-colors py-2 border-b border-[#8b6f47]/20"
                   onClick={() => setMobileMenuOpen(false)}
@@ -290,41 +310,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Upcoming Section */}
-      <section id="upcoming" className="py-16 md:py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-8 text-[#e8d4b8]">Upcoming Next</h2>
-          <div className="bg-[#1a1520]/30 rounded-lg p-6 md:p-8 border border-[#8b6f47]/30 shadow-xl">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0">
-                <Image
-                  src="/logos/lb-logo.png"
-                  alt="Little Branch Theater"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg md:text-xl font-medium text-[#e8d4b8]">Little Branch Theater</h3>
-                <p className="text-sm md:text-base text-[#c4a574]">Co-Founder & Co-Director</p>
-              </div>
-            </div>
-           <p className="text-[#d0d0d0] leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-              Little Branch is excited to share that we successfully completed our inaugural production! Honey Brown Eyes by Stefanie Zadravec was a meaningful debut for our company and resonated deeply with Boise's refugee community.
-            </p>
-            <p className="text-[#d0d0d0] leading-relaxed mb-6 text-sm md:text-base">
-              Now we're thrilled to announce our second production: Sanctuary City by Martyna Majok, running May 7-17, 2026. This powerful play continues our mission of asking important and relevant questions that challenge our community in thoughtful ways.
-            </p>
-            <Link 
-              href="https://www.littlebranchtheater.org" 
-              target="_blank"
-              className="inline-block px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded transition-all shadow-lg hover:shadow-xl font-medium text-sm md:text-base"
-            >
-              Visit Little Branch Theater
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Upcoming Section - hidden when no acting roles booked */}
 
       {/* Video Section */}
       <section className="py-16 md:py-20 px-6 bg-gradient-to-b from-transparent to-[#1a1520]/50">
@@ -375,38 +361,96 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Beyond the Stage - Combined with Reflections */}
+      {/* Beyond the Stage - Blog Carousel */}
       <section id="beyond" className="py-16 md:py-20 px-6 bg-gradient-to-b from-[#1a1520]/50 to-transparent">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif mb-8 text-[#e8d4b8]">Beyond the Stage</h2>
-          
-          {/* Reflection Card */}
-          <div className="bg-[#1a1520]/30 rounded-lg p-6 border border-[#8b6f47]/30 mb-8">
-            <h3 className="text-lg md:text-xl font-medium text-[#e8d4b8] mb-2">Learning DIY Theater</h3>
-            <p className="text-sm text-[#999] mb-4">March 2026</p>
-            <p className="text-[#d0d0d0] leading-relaxed">
-              Building a theater from the ground up. This includes learning how to market, how to budget, and how to literally build. Currently constructing the set of Sanctuary City in our own backyard—a hands-on education in every facet of theater-making.
-            </p>
-          </div>
 
-          {/* Current Interests */}
+          {/* Blog Carousel */}
+          <div className="bg-[#1a1520]/30 rounded-lg p-6 border border-[#8b6f47]/30">
+            <div className="flex items-center justify-between mb-4">
+              <button
+                onClick={() => setBlogIndex((blogIndex - 1 + blogPosts.length) % blogPosts.length)}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-[#8b6f47]/50 text-[#c4a574] hover:bg-[#8b6f47] hover:text-white transition-all"
+                aria-label="Newer post"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              <p className="text-sm text-[#999]">{blogPosts[blogIndex].date}</p>
+              <button
+                onClick={() => setBlogIndex((blogIndex + 1) % blogPosts.length)}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-[#8b6f47]/50 text-[#c4a574] hover:bg-[#8b6f47] hover:text-white transition-all"
+                aria-label="Older post"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+            </div>
+
+            <div className={`${blogPosts[blogIndex].image ? 'grid md:grid-cols-[1fr_1.5fr] gap-6' : ''}`}>
+              {blogPosts[blogIndex].image && (
+                <div className="relative aspect-square rounded-lg overflow-hidden border-2 border-[#8b6f47]/30">
+                  <Image
+                    src={blogPosts[blogIndex].image}
+                    alt={blogPosts[blogIndex].title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
+              <div>
+                <h3 className="text-lg md:text-xl font-medium text-[#e8d4b8] mb-3">{blogPosts[blogIndex].title}</h3>
+                <p className="text-[#d0d0d0] leading-relaxed text-sm md:text-base">{blogPosts[blogIndex].content}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Little Branch Theater */}
+      <section className="py-16 md:py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-[#1a1520]/30 rounded-lg p-6 md:p-8 border border-[#8b6f47]/30 flex flex-col items-center text-center">
+            <div className="w-20 h-20 md:w-24 md:h-24 relative mb-4">
+              <Image
+                src="/logos/lb-logo.png"
+                alt="Little Branch Theater"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <h3 className="text-lg md:text-xl font-medium text-[#e8d4b8] mb-1">Little Branch Theater</h3>
+            <p className="text-sm text-[#c4a574] mb-5">Co-Founder & Co-Director</p>
+            <Link
+              href="https://www.littlebranchtheater.org"
+              target="_blank"
+              className="inline-block px-6 py-3 border-2 border-[#8b6f47] text-[#c4a574] hover:bg-[#8b6f47] hover:text-white rounded transition-all shadow-lg hover:shadow-xl font-medium text-sm md:text-base"
+            >
+              Visit Little Branch Theater
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Current Interests */}
+      <section className="py-16 md:py-20 px-6 bg-gradient-to-b from-[#1a1520]/50 to-transparent">
+        <div className="max-w-4xl mx-auto">
           <div className="grid sm:grid-cols-3 gap-4">
             <div className="bg-[#1a1520]/30 rounded-lg p-4 border border-[#8b6f47]/30 text-center">
               <div className="text-2xl mb-2">🎭</div>
               <p className="text-xs text-[#c4a574] mb-1 uppercase tracking-wide">Next Up</p>
-              <p className="text-sm text-[#e8e8e8]">Performing in Sanctuary City</p>
+              <p className="text-sm text-[#e8e8e8]">Writing In-Progress</p>
             </div>
-            
+
             <div className="bg-[#1a1520]/30 rounded-lg p-4 border border-[#8b6f47]/30 text-center">
               <div className="text-2xl mb-2">📖</div>
               <p className="text-xs text-[#c4a574] mb-1 uppercase tracking-wide">Reading</p>
-              <p className="text-sm text-[#e8e8e8]">Crime and Punishment</p>
+              <p className="text-sm text-[#e8e8e8]">The Name of the Wind</p>
             </div>
-            
+
             <div className="bg-[#1a1520]/30 rounded-lg p-4 border border-[#8b6f47]/30 text-center">
               <div className="text-2xl mb-2">♟️</div>
               <p className="text-xs text-[#c4a574] mb-1 uppercase tracking-wide">Chess</p>
-              <p className="text-sm text-[#e8e8e8]">Elo 1017</p>
+              <p className="text-sm text-[#e8e8e8]">Elo 1061</p>
             </div>
           </div>
         </div>
